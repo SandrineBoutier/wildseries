@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie {{ category.id }}{% endblock %}
+
+{% block body %}
+
+Toutes nos séries de la catégorie {{category.name}}
+
+{% for program in programs %}
+        <div>
+            <h2> <a href="{{ path("program_show", { id: program.id }) }}">{{ program.id }} / {{ program.title }}</a></h2>
+            <p>{{ program.summary }}</p>
+            {# Lien vers la fiche de la série : ci dessous le {id: .....} c pcq la fct° show() de mon programController requiert un paramètre $id que je renseigne ici#}
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+
+    <a href="{{ path('category_index') }}">
+		Retour à la liste de toutes les catégories
+	</a>
+
+{% endblock %}
