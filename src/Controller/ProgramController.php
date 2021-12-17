@@ -37,7 +37,7 @@ class ProgramController extends AbstractController
     
     /**
      * Correspond à la route /program/show/{id} et au name "program_show"
-     * @Route("/show/{id<^[0-9]+$>}", name="show")
+     * @Route("/show/{id<^[0-9]+$>}", methods={"GET"},  name="show")
      * * @return Response
      */
     public function show(int $id): Response
