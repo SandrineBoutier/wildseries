@@ -18,7 +18,7 @@
 		<div>
 			<h2>Saison {{ season.number }} ( {{ season.year }} )</h2>
 			{# Lien vers la fiche de la saison : #}
-			<a href="{{ path('program_season_show',{programId:program.id,seasonId:season.id}) }}">voir le détail de cette saison</a>
+			<a href="{{ path('program_season_show',{program:program.id,season:season.id}) }}">voir le détail de cette saison</a>
 		</div>
 	{% else %}
 		Aucune saison trouvée.

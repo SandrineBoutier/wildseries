@@ -14,9 +14,9 @@
 	{% for episode in episodes %}
 		<div>
 			<h2>Episode  {{ episode.number }} </h2>
-			<p>{{ episode.synopsis }}</p>
-			{# Lien vers la fiche de la saison : #}
-			<a href="{{ path('program_season_show',{programId:program.id,seasonId:season.id}) }}"></a>
+			
+				{# Lien vers la fiche de l'épisode : #}
+				<a href="{{ path('program_episode_show',{program_id:program.id,season_id:season.id,episode_id:episode.id}) }}">plus de détails sur l'épisode {{ episode.number }} </a>
 		</div>
 	{% else %}
 		Aucune saison trouvée.
