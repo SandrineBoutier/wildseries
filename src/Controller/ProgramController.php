@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ProgramType;
+use App\Service\Slugify;
 
 /**
 * @Route("/program", name="program_")
@@ -47,7 +48,7 @@ class ProgramController extends AbstractController
      * @Route("/new", name="new")
      */
 
-    public function new(Request $request) : Response
+    public function new(Request $request,Slugify $slugify) : Response
     {
         // Create a new Program Object
         $program = new Program();
@@ -62,6 +63,9 @@ class ProgramController extends AbstractController
             // And redirect to a route that display the result
             // Get the Entity Manager
             $entityManager = $this->getDoctrine()->getManager();
+            //generate Slug
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
             // Persist Program Object
             $entityManager->persist($program);
             // Flush the persisted object
